@@ -3,19 +3,24 @@ namespace :staging_protection do
   task :initialize do
     path = "config/initializers/staging_protection.rb"
     file = File.open("#{Rails.root}/#{path}","w")
+
+    chars = [*('A'..'Z'), *('a'..'z'), *(0..9)]
+    password = (0..15).map {chars.sample}.join
+    token = (0..25).map {chars.sample}.join
+
     text = <<-TEXT
 StagingProtection.config do |config|
-  # Password should be changed
-  config.password = '123456'
+  # Password generated for your app can be changed
+  config.password = '#{password}'
 
-  # Token should be changed
-  config.token = '1234567819287321256789'
+  # Also you can change token
+  config.token = '#{token}'
 
   # Default error message can be overriden
   # config.message = 'you are not authorized to access this page.'
 
   # Default environment is staging, but it you can use any others.
-  # config.environment = 'development'
+  # config.environment = :development
 end
     TEXT
     file << text

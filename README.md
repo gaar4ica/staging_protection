@@ -27,7 +27,7 @@ Or create config file manualy.
 Set up your credentials in config file.
 Don't forget to restart web server. And that's it. Open `http://localhost:3000` (or your site url) and you'll see it is forbidden.
 
-Once use `http://localhost:3000/?password=<your password from config>`. Now you can walk trough your site without any password. Token is stored in cookies.
+Once use `http://localhost:3000/?pass=<your password from config>`. Now you can walk trough your site without any password. Token is stored in cookies.
 
 ### Customizing access
 

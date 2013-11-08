@@ -41,7 +41,7 @@ module StagingProtection
 
     module InstanceMethods
       def check_password_if_required
-        if Rails.env == environment && (request.format && (!request.format.json? || !request.format.js?)) && params[:format] != 'json'
+        if Rails.env == environment.to_s && (request.format && (!request.format.json? || !request.format.js?)) && params[:format] != 'json'
           if params[:pass] == password
             cookies['secret_token'] = token
           end
